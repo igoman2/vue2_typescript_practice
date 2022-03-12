@@ -10,7 +10,6 @@ const store: StoreOptions<RootState> = {
   state: state,
   mutations: mutations,
   actions: actions,
-  getters: getters,
 };
 export default new Vuex.Store(store);
 // export default new Vuex.Store({

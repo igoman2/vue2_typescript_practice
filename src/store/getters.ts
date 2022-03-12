@@ -1,8 +1,8 @@
 import { RootState } from "./state";
 
 export const getters = {
-  getToken(state: RootState) {
-    return state.news + "!";
+  fetchedNews(state: RootState) {
+    return state.news;
   },
 };
 export type Getters = typeof getters;

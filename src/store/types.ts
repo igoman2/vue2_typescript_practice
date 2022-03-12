@@ -1,5 +1,6 @@
 import { CommitOptions, DispatchOptions, Store } from "vuex";
 import { Actions } from "./actions";
+import { Getters } from "./getters";
 import { Mutations } from "./mutations";
 import { RootState } from "./state";
 
@@ -20,6 +21,17 @@ type MyActions = {
 };
 // Omit<Store<RouteState>, "commit"> -> Store에서 commit만 뺴고 전부 들고 오는 타입을 의미
 // commit은 MyMutations로 재정의
-export type MyStore = Omit<Store<RootState>, "commit" | "dispatch"> &
+
+type MyGetters = {
+  getters: {
+    [K in keyof Getters]: ReturnType<Getters[K]>;
+  };
+};
+
+export type MyStore = Omit<
+  Store<RootState>,
+  "getters" | "commit" | "dispatch"
+> &
   MyMutations &
-  MyActions;
+  MyActions &
+  MyGetters;
